@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+	</head>
+	<body>
+
+		<div class="vv-distort-bg distortion">
+			<div class="vv-distort-img" data-displacement="img/displacement/4.png" data-intensity="0.2" data-speedIn="1.6" data-speedOut="1.6">
+				<img src="img/vv-english.png" alt="Image"/>
+				<img src="img/vv-hindi.png" alt="Image"/>
+			</div>
+		</div>
+
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+		<script src="js/hover.js"></script>
+		<script>
+			Array.from(document.querySelectorAll('.vv-distort-img')).forEach((el) => {
+				const imgs = Array.from(el.querySelectorAll('img'));
+				new hoverEffect({
+					parent: el,
+					intensity: el.dataset.intensity || undefined,
+					speedIn: el.dataset.speedin || undefined,
+					speedOut: el.dataset.speedout || undefined,
+					easing: el.dataset.easing || undefined,
+					hover: el.dataset.hover || undefined,
+					image1: imgs[0].getAttribute('src'),
+					image2: imgs[1].getAttribute('src'),
+					displacementImage: el.dataset.displacement
+				});
+			});
+		</script>
+	</body>
+</html>
